@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Vue transition 테스트</h1>
+    <button @click="make">만들기</button>
+    <transition name="gura">
+      <div v-if="isMake" class="box"></div>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      isMake:true
+    };
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    background-color: yellow;
+  }
+
+  /* 등장하기(만들어지기 or 보여지기) 직전에 추가되는 클래스 */
+  .gura-enter{
+    background-color: pink;
+  }
+
+  .gura-enter-to{
+    background-color: red;
+    transform: translateX(100px);
+  }
+
+  /* 등장하는(만들어지기 or 보여지기) 동안에 추가되는 클래스  */
+  .gura-enter-active{
+    transition: all 5s;
+  }
+  
 </style>
